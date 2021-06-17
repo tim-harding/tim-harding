@@ -1,18 +1,48 @@
-<template>
-	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-		<title>Sun</title>
-		<circle :class="$style.fill" cx="12" cy="12" r="4" />
-		<path
-			:class="$style.stroke"
-			d="M12 5L12 3M12 21L12 19M5 12L2 12 5 12zM22 12L19 12 22 12zM16.9497475 7.05025253L19.0710678 4.92893219 16.9497475 7.05025253zM4.92893219 19.0710678L7.05025253 16.9497475 4.92893219 19.0710678zM16.9497475 16.9497475L19.0710678 19.0710678 16.9497475 16.9497475zM4.92893219 4.92893219L7.05025253 7.05025253 4.92893219 4.92893219z"
-		/>
-	</svg>
+<template lang="pug">
+svg(
+	xmlns="http://www.w3.org/2000/svg",
+	viewBox="0 0 24 24"
+)
+	title Sun
+	circle(
+		:class="$style.fill",
+		cx="12",
+		cy="12",
+		r="4.5",
+	)
+	line(
+		:class="$style.stroke"
+		v-for="rotation in rotations"
+		:key="rotation"
+		x1="20"
+		x2="23"
+		y1="12"
+		y2="12"
+		:transform="rotation"
+	)
 </template>
+
+<script lang="ts">import { defineComponent } from "@vue/runtime-core";
+
+export default defineComponent({
+	setup() {
+		const rotations = []
+		for (let i = 0; i < 8; i++) {
+			rotations.push(`rotate(${i * 45} 12 12)`)
+		}
+
+		return {
+			rotations,
+		}
+	}
+})
+</script>
 
 <style lang="scss" module>
 .stroke {
 	stroke: var(--dark-4);
 	stroke-width: 2;
+	stroke-linecap: round;
 }
 
 .fill {

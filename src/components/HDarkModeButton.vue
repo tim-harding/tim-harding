@@ -31,13 +31,13 @@ export default defineComponent({
 .root {
 	grid-template-columns: repeat(2, 100%);
 	grid-template-rows: 1fr;
-	width: 2.5rem;
-	height: 2.5rem;
 	background-color: var(--light-3);
 	border-radius: 0.25rem;
+	padding: 0.5rem;
 }
 
 .sun, .moon {
-	margin: 0.25rem;
+	width: 1.5rem;
+	height: 1.5rem;
 }
 </style>
