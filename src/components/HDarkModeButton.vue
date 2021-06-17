@@ -21,14 +21,6 @@ export default defineComponent({
 	setup() {
 		const isDarkMode = ref(false)
 
-		const request = window.indexedDB.open("harding")
-		request.onsuccess = () => {
-			const db = request.result
-			const tx = db.transaction("global", "readwrite")
-			const store = tx.objectStore("global")
-			store.get("")
-		}
-
 		return {
 			isDarkMode,
 		}
