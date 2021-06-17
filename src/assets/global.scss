@@ -1,0 +1,390 @@
+// Reset
+* {
+    all: unset;
+    box-sizing: border-box;
+    display: grid;
+}
+
+head *, style, script, source {
+    display: none;
+}
+
+:root {
+    font-family: Concourse;
+
+    --concourse-c2sc: "c2sc" off;
+    --concourse-case: "case" off;
+    --concourse-dnom: "dnom" off;
+    --concourse-frac: "frac" off;
+    --concourse-numr: "numr" off;
+    --concourse-onum: "onum" off;
+    --concourse-ordn: "ordn" off;
+    --concourse-sinf: "sinf" off;
+    --concourse-ss01: "ss01" off;
+    --concourse-ss02: "ss02" off;
+    --concourse-ss03: "ss03" off;
+    --concourse-ss04: "ss04" off;
+    --concourse-ss05: "ss05" off;
+    --concourse-ss06: "ss06" off;
+    --concourse-ss07: "ss07" off;
+    --concourse-ss08: "ss08" off;
+    --concourse-ss10: "ss10" off;
+    --concourse-subs: "subs" off;
+    --concourse-sups: "sups" off;
+    --concourse-tnum: "tnum" off;
+
+    // Nord palette usage
+    // https://www.nordtheme.com/docs/colors-and-palettes
+
+    --dark-1: #2e3440;
+    --dark-2: #3b4252;
+    --dark-3: #434c5e;
+    --dark-4: #4c566a;
+
+    --light-1: #eceff4;
+    --light-2: #e5e9f0;
+    --light-3: #d8dee9;
+
+    --frost-1: #8fbcbb;
+    --frost-2: #88c0d0;
+    --frost-3: #81a1c1;
+    --frost-4: #5e81ac;
+
+    --aurora-red: #bf616a;
+    --aurora-orange: #d08770;
+    --aurora-yellow: #ebcb8b;
+    --aurora-green: #a3be8c;
+    --aurora-purple: #b48ead;
+    
+    color: var(--dark-1);
+}
+
+.light {
+    --background: #f2f4f8;
+    --fill: white;
+    --primary: var(--nord6);
+    --secondary: var(--nord5);
+    --tertiary: var(--nord4);
+    --primary-text: var(--nord3);
+    --secondary-text: var(--nord3);
+    --tertiary-text: #7b88a1;
+    --link: var(--nord10);
+}
+
+.dark {
+    --background: #242933;
+    --fill: var(--nord0);
+    --primary: var(--nord1);
+    --secondary: var(--nord2);
+    --tertiary: var(--nord3);
+    --primary-text: var(--nord6);
+    --secondary-text: var(--nord4);
+    --tertiary-text: #abb9cf;
+    --link: var(--nord8);
+}
+
+@font-face {
+    font-family: Concourse;
+    src: url(/fonts/concourse_t2_regular.woff2);
+    font-weight: 200;
+}
+
+@font-face {
+    font-family: Concourse;
+    src: url(/fonts/concourse_t3_regular.woff2);
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: Concourse;
+    src: url(/fonts/concourse_t4_regular.woff2);
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: Concourse;
+    src: url(/fonts/concourse_t6_regular.woff2);
+    font-weight: 600;
+}
+
+@font-face {
+    font-family: Concourse;
+    src: url(/fonts/concourse_t7_regular.woff2);
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: Concourse;
+    src: url(/fonts/concourse_t8_regular.woff2);
+    font-weight: 800;
+}
+
+@font-face {
+    font-family: Concourse;
+    src: url(/fonts/concourse_t2_italic.woff2);
+    font-style: italic;
+    font-weight: 200;
+}
+
+@font-face {
+    font-family: Concourse;
+    src: url(/fonts/concourse_t3_italic.woff2);
+    font-style: italic;
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: Concourse;
+    src: url(/fonts/concourse_t4_italic.woff2);
+    font-style: italic;
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: Concourse;
+    src: url(/fonts/concourse_t6_italic.woff2);
+    font-style: italic;
+    font-weight: 600;
+}
+
+@font-face {
+    font-family: Concourse;
+    src: url(/fonts/concourse_t7_italic.woff2);
+    font-style: italic;
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: Concourse;
+    src: url(/fonts/concourse_t8_italic.woff2);
+    font-style: italic;
+    font-weight: 800;
+}
+
+@font-face {
+    font-family: Concourse Caps;
+    src: url(/fonts/concourse_c2_regular.woff2);
+    font-weight: 200;
+}
+
+@font-face {
+    font-family: Concourse Caps;
+    src: url(/fonts/concourse_c3_regular.woff2);
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: Concourse Caps;
+    src: url(/fonts/concourse_c4_regular.woff2);
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: Concourse Caps;
+    src: url(/fonts/concourse_c6_regular.woff2);
+    font-weight: 600;
+}
+
+@font-face {
+    font-family: Concourse Caps;
+    src: url(/fonts/concourse_c7_regular.woff2);
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: Concourse Caps;
+    src: url(/fonts/concourse_c8_regular.woff2);
+    font-weight: 800;
+}
+
+/* 
+Small caps from capitals. 
+All characters are small caps. 
+*/
+.concourse-c2sc {
+    --concourse-c2sc: "c2sc" on;
+}
+
+/* 
+Case-sensitive forms.
+Caps font: Turns capital characters into small caps.
+Text font: Turns lowercase characters into caps.
+*/
+.concourse-case {
+    --concourse-case: "case" on;
+}
+
+/* Denominators (for fractions) */
+.concourse-dnom {
+    --concourse-dnom: "dnom" on;
+}
+
+/* Fractions */
+.concourse-frac {
+    --concourse-frac: "frac" on;
+}
+
+@supports (font-variant-numeric: diagonal-fractions) {
+    .concourse-frac {
+        --concourse-frac: "____";
+        font-variant-numeric: diagonal-fractions;
+    }
+}
+
+/* Numerators (for fractions) */
+.concourse-numr {
+    --concourse-numr: "numr" on;
+}
+
+/* 
+Oldstyle figures 
+Small caps for numeric figures only
+*/
+.concourse-onum {
+    --concourse-onum: "onum" on;
+}
+
+@supports (font-variant-numeric: oldstyle-nums) {
+    .concourse-onum {
+        --concourse-onum: "____";
+        font-variant-numeric: oldstyle-nums;
+    }
+}
+
+/* 
+Ordinals
+1st, 2nd, 5th, etc. 
+Superscripts for non-numeric figures.
+MBType recommends avoiding these. 
+*/
+.concourse-ordn {
+    --concourse-ordn: "ordn" on;
+}
+
+@supports (font-variant-numeric: ordinal) {
+    .concourse-ordn {
+        --concourse-ordn: "____";
+        font-variant-numeric: ordinal;
+    }
+}
+
+/* Scientific inferiors (numeric subscripts) */
+.concourse-sinf {
+    --concourse-sinf: "sinf" on;
+}
+
+/* Eastern mode */
+.concourse-ss01 {
+    --concourse-ss01: "ss01" on;
+}
+
+/* British mode */
+.concourse-ss02 {
+    --concourse-ss02: "ss02" on;
+}
+
+/* French mode */
+.concourse-ss03 {
+    --concourse-ss03: "ss03" on;
+}
+
+/* Swiss mode */
+.concourse-ss04 {
+    --concourse-ss04: "ss04" on;
+}
+
+/* German mode */
+.concourse-ss05 {
+    --concourse-ss05: "ss05" on;
+}
+
+/* Swedish mode */
+.concourse-ss06 {
+    --concourse-ss06: "ss06" on;
+}
+
+/* Lowercase a alt */
+.concourse-ss07 {
+    --concourse-ss07: "ss07" on;
+}
+
+/* Arrow glyphs in circles */
+.concourse-ss08 {
+    --concourse-ss08: "ss08" on;
+}
+
+/* Unknown */
+.concourse-ss10 {
+    --concourse-ss10: "ss10" on;
+}
+
+/* Subscript */
+.concourse-subs {
+    --concourse-subs: "subs" on;
+}
+
+@supports (font-variant-position: sub) {
+    .concourse-subs {
+        --concourse-subs: "____";
+        font-variant-position: sub;
+    }
+}
+
+/* Superscript */
+.concourse-sups {
+    --concourse-sups: "sups" on;
+}
+
+@supports (font-variant-position: super) {
+    .concourse-sups {
+        --concourse-sups: "____";
+        font-variant-position: super;
+    }
+}
+
+/* 
+Tabular figures. 
+Equal-width numbers that line up across lines. 
+Equivalent to T# fonts included with Concourse. 
+*/
+.concourse-tnum {
+    --concourse-tnum: "tnum" on;
+}
+
+@supports (font-variant-numeric: tabular-nums) {
+    .concourse-tnum {
+        --concourse-tnum: "____";
+        font-variant-numeric: tabular-nums;
+    }
+}
+
+/* 
+Apply current state of all custom properties
+whenever a class is being applied 
+*/
+.concourse-c2sc,
+.concourse-case,
+.concourse-dnom,
+.concourse-frac,
+.concourse-numr,
+.concourse-onum,
+.concourse-ordn,
+.concourse-sinf,
+.concourse-ss01,
+.concourse-ss02,
+.concourse-ss03,
+.concourse-ss04,
+.concourse-ss05,
+.concourse-ss06,
+.concourse-ss07,
+.concourse-ss08,
+.concourse-ss10,
+.concourse-subs,
+.concourse-sups,
+.concourse-tnum {
+    font-feature-settings: var(--concourse-c2sc), var(--concourse-case), var(--concourse-dnom), var(--concourse-frac),
+        var(--concourse-numr), var(--concourse-onum), var(--concourse-ordn), var(--concourse-sinf),
+        var(--concourse-ss01), var(--concourse-ss02), var(--concourse-ss03), var(--concourse-ss04),
+        var(--concourse-ss05), var(--concourse-ss06), var(--concourse-ss07), var(--concourse-ss08),
+        var(--concourse-ss10), var(--concourse-subs), var(--concourse-sups), var(--concourse-tnum);
+}
