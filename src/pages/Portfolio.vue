@@ -1,6 +1,6 @@
 <template lang="pug">
 div(:class="$style.root")
-  router-view(:class="$style.carousel")
+  HImage(:class="$style.carousel")
   HHeader(:class="$style.header")
 </template>
 
@@ -8,11 +8,13 @@ div(:class="$style.root")
 import { defineComponent } from "@vue/runtime-core";
 import HCarousel from ".././components/HCarousel.vue"
 import HHeader from ".././components/HHeader.vue"
+import HImage from "../components/HImage.vue";
 
 export default defineComponent({
   components: {
     HCarousel,
     HHeader,
+    HImage,
   },
 })
 </script>

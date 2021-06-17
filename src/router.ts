@@ -1,6 +1,5 @@
 import { createRouter, createWebHistory, RouteLocationNormalized } from "vue-router"
 import Portfolio from "./pages/Portfolio.vue"
-import HImage from "./components/HImage.vue"
 import { imageForName, images } from "./shared/images"
 import { getRouteParam } from "./shared/misc"
 
@@ -14,25 +13,18 @@ const routerConfig = {
             }
         },
         {
-            name: "portfolio",
             path: "/portfolio",
-            component: Portfolio,
-            children: [
-                {
-                    path: "",
-                    redirect: {
-                        name: "carousel-image",
-                        params: {
-                            image: images[0]!.name,
-                        }
-                    }
+            redirect: {
+                name: "portfolio",
+                params: {
+                    image: images[0]!.name,
                 },
-                {
-                    name: "carousel-image",
-                    path: ":image",
-                    component: HImage,
-                }
-            ]
+            },
+        },
+        {
+            name: "portfolio",
+            path: "/portfolio/:image",
+            component: Portfolio,
         }
     ],
 }
@@ -41,14 +33,20 @@ export const router = createRouter(routerConfig)
 
 router.beforeEach((to, from, next) => {
     switch (to.name) {
-        case "carousel-image": {
+        case "portfolio": {
             console.log("Navigation to carousel image")
             const param = getRouteParam(to)
             console.log(param)
             if (param === undefined || imageForName(param) === undefined) {
-                to.params.image = images[0]!.name
+                next({
+                    name: "portfolio",
+                    params: {
+                        image: images[0]!.name,
+                    }
+                })
+            } else {
+                next()
             }
-            next()
             break
         }
         default: {
