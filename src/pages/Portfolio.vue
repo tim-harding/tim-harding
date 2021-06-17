@@ -1,14 +1,15 @@
 <template lang="pug">
 div(:class="$style.root")
-  router-view(:class="$style.carousel", v-slot="{ Component, route }")
-    transition(
-      :enter-active-class="$style.fadeEnterActive",
-      :leave-active-class="$style.fadeLeaveActive",
-      :enter-from-class="$style.fadeEnterFrom",
-      :leave-from-class="$style.fadeLeaveFrom",
-    )
-      component(:is="Component", :key="route.path")
   HHeader(:class="$style.header")
+  main(:class="$style.carousel")
+    router-view(v-slot="{ Component, route }")
+      transition(
+        :enter-active-class="$style.fadeEnterActive",
+        :leave-active-class="$style.fadeLeaveActive",
+        :enter-from-class="$style.fadeEnterFrom",
+        :leave-from-class="$style.fadeLeaveFrom",
+      )
+        component(:is="Component", :key="route.path")
 </template>
 
 <script lang="ts">
@@ -37,6 +38,13 @@ export default defineComponent({
 
 .carousel {
   grid-area: carousel;
+  grid-template-rows: 1fr;
+  grid-template-columns: 1fr;
+  grid-template-areas: "center";
+  
+  & > * {
+    grid-area: center;
+  }
 }
 
 .header {
