@@ -1,7 +1,8 @@
-import { createRouter, createWebHistory } from "vue-router"
+import { createRouter, createWebHistory, RouteLocationNormalized } from "vue-router"
 import Portfolio from "./pages/Portfolio.vue"
 import HImage from "./components/HImage.vue"
-import { images } from "./shared/images"
+import { imageForName, images } from "./shared/images"
+import { getRouteParam } from "./shared/misc"
 
 const routerConfig = {
     history: createWebHistory(),
@@ -37,3 +38,22 @@ const routerConfig = {
 }
 
 export const router = createRouter(routerConfig)
+
+router.beforeEach((to, from, next) => {
+    switch (to.name) {
+        case "carousel-image": {
+            console.log("Navigation to carousel image")
+            const param = getRouteParam(to)
+            console.log(param)
+            if (param === undefined || imageForName(param) === undefined) {
+                to.params.image = images[0]!.name
+            }
+            next()
+            break
+        }
+        default: {
+            next()
+            break
+        }
+    }
+})

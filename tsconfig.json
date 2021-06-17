@@ -5,6 +5,7 @@
     "moduleResolution": "node",
     "strict": true,
     "noUncheckedIndexedAccess": true,
+    "noFallthroughCasesInSwitch": true,
     "jsx": "preserve",
     "sourceMap": true,
     "resolveJsonModule": true,

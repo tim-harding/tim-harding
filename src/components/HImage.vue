@@ -16,9 +16,10 @@ li(:class="$style.item")
 
 <script lang="ts">
 import { defineComponent } from "@vue/runtime-core";
-import { onBeforeRouteUpdate, useRoute, useRouter } from "vue-router";
-import { imageForName, images, sizes4k, sizesNo4k } from "../shared/images"
-import { assertDefined } from "../shared/assertions"
+import { useRoute } from "vue-router";
+import { assertDefined } from "../shared/assertions";
+import { imageForName, sizes4k, sizesNo4k } from "../shared/images"
+import { getRouteParam } from "../shared/misc";
 
 interface Srcsets {
 	jpg: string[],
@@ -35,82 +36,14 @@ interface Image {
 	key: string,
 }
 
-function getRouteParam(): string | undefined {
-	const route = useRoute()
-	const image = route.params.image
-	switch (typeof image) {
-		case "string": {
-			return image
-		}
-		case "object": {
-			return image[0]
-		}
-		case "undefined": {
-			return undefined
-		}
-	}
-}
-
 export default defineComponent({
 	setup() {
-		console.log("Entered route")
-		const fixRoute = () => {
-			const param = getRouteParam()
-			console.log(param)
-			if (param === undefined || imageForName(param) === undefined) {
-				// const route = useRoute()
-				// console.log("Fixing route")
-				// route.params.image = images[0]!.name
-				const router = useRouter()
-				router.push({
-					name: "portfolio",
-					params: {
-						image: images[0]!.name,
-					},
-				})
-			}
-		}
-
-		onBeforeRouteUpdate(async (to, from) => {
-			fixRoute()
-		})
-
-		fixRoute()
-
-		const name = getRouteParam()
-		if (name === undefined) {
-			return {
-				image: {
-					srcset: {
-						jpg: "",
-						webp: "",
-					},
-					fallback: "",
-					alt: "",
-					key: "",
-				},
-				sizesQuery: "",
-			}
-		}
+		const name = getRouteParam(useRoute())
 		// After fixing the route, we should get back a valid image name
-		// assertDefined(name)
+		assertDefined(name)
 
 		const info = imageForName(name)
-		if (info === undefined) {
-			return {
-				image: {
-					srcset: {
-						jpg: "",
-						webp: "",
-					},
-					fallback: "",
-					alt: "",
-					key: "",
-				},
-				sizesQuery: "",
-			}
-		}
-		// assertDefined(info)
+		assertDefined(info)
 
 		const srcsets: Srcsets = {
 			jpg: [],
