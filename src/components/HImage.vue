@@ -16,10 +16,8 @@ div(:class="$style.item")
 
 <script lang="ts">
 import { computed, defineComponent } from "@vue/runtime-core";
-import { useRoute } from "vue-router";
 import { assertDefined } from "../shared/assertions";
 import { imageForName, sizes4k, sizesNo4k } from "../shared/images"
-import { getRouteParam } from "../shared/misc";
 
 interface Image {
 	srcset: {
@@ -32,13 +30,16 @@ interface Image {
 }
 
 export default defineComponent({
-	setup() {
-		const route = useRoute()
-		
-		const image = computed((): Image => {
-			const name = getRouteParam(route)
-			assertDefined(name)
+	props: {
+		name: {
+			type: String,
+			required: true,
+		}
+	},
 
+	setup(props) {
+		const image = computed((): Image => {
+			const name = props.name
 			const info = imageForName(name)
 			assertDefined(info)
 

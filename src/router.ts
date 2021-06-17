@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router"
 import Portfolio from "./pages/Portfolio.vue"
-import HImage from "./components/HImage.vue"
+import HCarousel from "./components/HCarousel.vue"
 import { imageForName, images } from "./shared/images"
 import { getRouteParam } from "./shared/misc"
 
@@ -30,7 +30,7 @@ const routerConfig = {
 				{
 					name: "carousel",
 					path: ":image",
-					component: HImage,
+					component: HCarousel,
 				},
 			],
 		},
