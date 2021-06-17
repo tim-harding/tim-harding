@@ -26,7 +26,7 @@ export default defineComponent({
   },
   
   setup() {
-    const isContactSheet = ref(false)
+    const isContactSheet = ref(true)
     
     return {
       isContactSheet,
