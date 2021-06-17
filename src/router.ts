@@ -1,12 +1,26 @@
 import { createRouter, createWebHistory } from "vue-router"
 import Portfolio from "./pages/Portfolio.vue"
+import HImage from "./components/HImage.vue"
 
 const routerConfig = {
     history: createWebHistory(),
     routes: [
         {
-            path: "/portfolio/:image",
+            path: "/",
+            redirect: {
+                name: "portfolio",
+            }
+        },
+        {
+            name: "portfolio",
+            path: "/portfolio",
             component: Portfolio,
+            children: [
+                {
+                    path: ":image",
+                    component: HImage,
+                }
+            ]
         }
     ],
 }

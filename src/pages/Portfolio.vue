@@ -1,6 +1,6 @@
 <template lang="pug">
 div(:class="$style.root")
-  HCarousel(:class="$style.carousel")
+  router-view(:class="$style.carousel")
   HHeader(:class="$style.header")
 </template>
 
@@ -15,6 +15,20 @@ export default defineComponent({
     HHeader,
   },
 })
+
+function imageId(param: string | string[]): string {
+  switch (typeof param) {
+    case "string": {
+      return param
+    }
+    default: {
+      if (param.length === 0) {
+        return ""
+      }
+      return param[0]
+    }
+  }
+}
 </script>
 
 <style lang="scss" module>
@@ -25,7 +39,7 @@ export default defineComponent({
 
   grid-template-columns: 100vw;
   grid-template-rows: 1fr auto;
-  grid-template-areas: 
+  grid-template-areas:
     "carousel"
     "header";
 }
