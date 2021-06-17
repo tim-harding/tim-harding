@@ -1,21 +1,22 @@
 <template lang="pug">
 div(:class="$style.root")
+  HNavCursors(:class="$style.cursors")
   HImage(:class="$style.carousel")
   HHeader(:class="$style.header")
 </template>
 
 <script lang="ts">
 import { defineComponent } from "@vue/runtime-core";
-import HCarousel from ".././components/HCarousel.vue"
 import HHeader from ".././components/HHeader.vue"
 import HImage from "../components/HImage.vue";
+import HNavCursors from "../components/HNavCursors.vue";
 
 export default defineComponent({
   components: {
-    HCarousel,
     HHeader,
     HImage,
-  },
+    HNavCursors,
+},
 })
 </script>
 
@@ -30,6 +31,10 @@ export default defineComponent({
   grid-template-areas:
     "carousel"
     "header";
+}
+
+.cursors {
+  grid-area: carousel;
 }
 
 .carousel {
