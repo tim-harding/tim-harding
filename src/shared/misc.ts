@@ -14,3 +14,7 @@ export function getRouteParam(to: RouteLocationNormalized): string | undefined {
         }
     }
 }
+
+export function mod(value: number, m: number): number {
+    return ((value % m) + m) % m
+}

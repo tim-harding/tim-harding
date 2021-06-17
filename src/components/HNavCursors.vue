@@ -1,19 +1,58 @@
 <template lang="pug">
 div(:class="$style.root")
-	button(:class="$style.left", @click="$emit('left')")
+	router-link(:class="$style.left", :to="links.previous")
 	button(:class="$style.center", @click="$emit('contactSheet')")
-	button(:class="$style.right", @click="$emit('right')")
+	router-link(:class="$style.right", :to="links.next")
 </template>
 
 <script lang="ts">
-import { defineComponent } from "@vue/runtime-core";
+import { computed, defineComponent } from "@vue/runtime-core";
+import { useRoute } from "vue-router";
+import { assertDefined } from "../shared/assertions";
+import { imageIndex, images } from "../shared/images";
+import { getRouteParam, mod } from "../shared/misc";
 
 export default defineComponent({
 	emits: [
-		"left",
 		"contactSheet",
-		"right",
 	],
+
+	setup() {
+		const route = useRoute()
+
+		const links = computed(() => {
+			const name = getRouteParam(route)
+			assertDefined(name)
+
+			const index = imageIndex(name)
+			assertDefined(index)
+
+			const previousIndex = mod(index - 1, images.length)
+			const previous = {
+				name: "portfolio",
+				params: {
+					image: images[previousIndex]!.name,
+				},
+			}
+
+			const nextIndex = mod(index + 1, images.length)
+			const next = {
+				name: "portfolio",
+				params: {
+					image: images[nextIndex]!.name,
+				},
+			}
+
+			return {
+				previous,
+				next,
+			}
+		})
+		
+		return {
+			links,
+		}
+	}
 })
 </script>
 

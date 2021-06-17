@@ -88,6 +88,10 @@ for (let i = 0; i < images.length; i++) {
     imageLookup[image.name] = i
 }
 
+export function imageIndex(name: string): number | undefined {
+    return imageLookup[name];
+}
+
 export function imageForName(name: string): ImageInfo | undefined {
     const index = imageLookup[name]
     if (index === undefined) {

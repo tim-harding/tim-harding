@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory, RouteLocationNormalized } from "vue-router"
+import { createRouter, createWebHistory } from "vue-router"
 import Portfolio from "./pages/Portfolio.vue"
 import { imageForName, images } from "./shared/images"
 import { getRouteParam } from "./shared/misc"
@@ -34,9 +34,7 @@ export const router = createRouter(routerConfig)
 router.beforeEach((to, from, next) => {
     switch (to.name) {
         case "portfolio": {
-            console.log("Navigation to carousel image")
             const param = getRouteParam(to)
-            console.log(param)
             if (param === undefined || imageForName(param) === undefined) {
                 next({
                     name: "portfolio",

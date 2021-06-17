@@ -3,28 +3,23 @@ li(:class="$style.item")
 	picture(:class="$style.picture")
 		source(
 			:srcset="image.srcset.webp",
-			:sizes="sizesQuery",
+			:sizes="image.sizesQuery",
 			type="image/webp"
 		)
 		source(
 			:srcset="image.srcset.jpg",
-			:sizes="sizesQuery",
+			:sizes="image.sizesQuery",
 			type="image/jpeg"
 		)
 		img(:src="image.fallback", :alt="image.alt", :class="$style.image")
 </template>
 
 <script lang="ts">
-import { defineComponent } from "@vue/runtime-core";
-import { useRoute } from "vue-router";
+import { computed, defineComponent } from "@vue/runtime-core";
+import { onBeforeRouteUpdate, useRoute } from "vue-router";
 import { assertDefined } from "../shared/assertions";
 import { imageForName, sizes4k, sizesNo4k } from "../shared/images"
 import { getRouteParam } from "../shared/misc";
-
-interface Srcsets {
-	jpg: string[],
-	webp: string[],
-}
 
 interface Image {
 	srcset: {
@@ -33,46 +28,49 @@ interface Image {
 	},
 	fallback: string,
 	alt: string,
-	key: string,
+	sizesQuery: string,
 }
 
 export default defineComponent({
 	setup() {
-		const name = getRouteParam(useRoute())
-		// After fixing the route, we should get back a valid image name
-		assertDefined(name)
+		const route = useRoute()
+		
+		const image = computed((): Image => {
+			const name = getRouteParam(route)
+			assertDefined(name)
 
-		const info = imageForName(name)
-		assertDefined(info)
+			const info = imageForName(name)
+			assertDefined(info)
 
-		const srcsets: Srcsets = {
-			jpg: [],
-			webp: [],
-		};
-		const sizes = info.has4k ? sizes4k : sizesNo4k;
-		for (const size of sizes) {
-			for (const [format, srcset] of Object.entries(srcsets)) {
-				const source = `/images/${name}_${size}.${format} ${size}w`
-				srcset.push(source)
+			const srcsets: Record<string, string[]> = {
+				jpg: [],
+				webp: [],
+			};
+			const sizes = info.has4k ? sizes4k : sizesNo4k;
+			for (const size of sizes) {
+				for (const [format, srcset] of Object.entries(srcsets)) {
+					const source = `/images/${name}_${size}.${format} ${size}w`
+					srcset.push(source)
+				}
 			}
-		}
-		const fallback = `/images/${name}_960.jpg`
-		const image: Image = {
-			srcset: {
-				jpg: srcsets.jpg.join(", "),
-				webp: srcsets.webp.join(", "),
-			},
-			fallback,
-			alt: info.alt,
-			key: name,
-		}
+			const fallback = `/images/${name}_960.jpg`
+			const sizesQuery = sizes.map(size => {
+				return `(max-width: ${size}px) ${size}px`
+			}).join(", ")
 
-		const sizesQuery = sizesNo4k.map(size => `(max-width: ${size}px) ${size}px`)
-			.join(", ")
+			return {
+				srcset: {
+					jpg: srcsets.jpg!.join(", "),
+					webp: srcsets.webp!.join(", "),
+				},
+				fallback,
+				alt: info.alt,
+				sizesQuery,
+			}
+		})
 
 		return {
 			image,
-			sizesQuery,
 		}
 	}
 })
