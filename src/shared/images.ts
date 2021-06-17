@@ -1,69 +1,99 @@
 export interface ImageInfo {
+    name: string,
     alt: string,
     has4k: boolean,
 }
 
-export const images: Record<string, ImageInfo> = {
-    absolut_vodka: {
+export const images: ReadonlyArray<ImageInfo> = [
+    {
+        name: "absolut_vodka",
         alt: "Absolut Vodka bottle",
         has4k: true,
     },
-    aventador: {
+    {
+        name: "aventador",
         alt: "Lamborghini Aventador sportscar",
         has4k: true,
     },
-    beats: {
+    {
+        name: "beats",
         alt: "Beats by Dr. Dre headphones",
         has4k: true,
     },
-    bombay_sapphire: {
+    {
+        name: "bombay_sapphire",
         alt: "Bombay Sapphire gin bottle",
         has4k: false,
     },
-    dior: {
+    {
+        name: "dior",
         alt: "Dior perfume bottle",
         has4k: true,
     },
-    ferrari_italia: {
+    {
+        name: "ferrari_italia",
         alt: "Ferrari Italia sportscar",
         has4k: true,
     },
-    hugo_boss: {
+    {
+        name: "hugo_boss",
         alt: "Hugo Boss watch",
         has4k: true,
     },
-    mackie: {
+    {
+        name: "mackie",
         alt: "Mackie speakers",
         has4k: false,
     },
-    michael_kors: {
+    {
+        name: "michael_kors",
         alt: "Michael Kors watch",
         has4k: true,
     },
-    nixon: {
+    {
+        name: "nixon",
         alt: "Nixon watch",
         has4k: true,
     },
-    ring: {
+    {
+        name: "ring",
         alt: "A ring",
         has4k: false,
     },
-    tiffany: {
+    {
+        name: "tiffany",
         alt: "Tiffany perfume",
         has4k: false,
     },
-    tincup: {
+    {
+        name: "tincup",
         alt: "Tincup whiskey",
         has4k: true,
     },
-    versace: {
+    {
+        name: "versace",
         alt: "Versace perfume",
         has4k: true,
     },
-    wii: {
+    {
+        name: "wii",
         alt: "A wiimote controller",
         has4k: true,
     },
+]
+
+const imageLookup: Record<string, number> = {}
+for (let i = 0; i < images.length; i++) {
+    const image = images[i]!
+    imageLookup[image.name] = i
+}
+
+export function imageForName(name: string): ImageInfo | undefined {
+    const index = imageLookup[name]
+    if (index === undefined) {
+        return undefined
+    }
+    return images[index]
 }
 
 export const sizes4k = [

@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router"
 import Portfolio from "./pages/Portfolio.vue"
 import HImage from "./components/HImage.vue"
+import { images } from "./shared/images"
 
 const routerConfig = {
     history: createWebHistory(),
@@ -21,8 +22,7 @@ const routerConfig = {
                     redirect: {
                         name: "carousel-image",
                         params: {
-                            // Todo: First image in list
-                            image: "whatever",
+                            image: images[0]!.name,
                         }
                     }
                 },
