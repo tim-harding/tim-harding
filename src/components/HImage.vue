@@ -16,8 +16,9 @@ li(:class="$style.item")
 
 <script lang="ts">
 import { defineComponent } from "@vue/runtime-core";
-import { useRoute } from "vue-router";
-import { images, sizes4k, sizesNo4k, formats } from "../shared/images"
+import { onBeforeRouteUpdate, useRoute } from "vue-router";
+import { images, sizes4k, sizesNo4k } from "../shared/images"
+import { assertDefined } from "../shared/assertions"
 
 interface Srcsets {
 	jpg: string[],
@@ -34,15 +35,45 @@ interface Image {
 	key: string,
 }
 
+function getRouteParam(): string | undefined {
+	const route = useRoute()
+	const image = route.params.image
+  switch (typeof image) {
+    case "string": {
+      return image
+    }
+		case "object": {
+      return image[0]
+		}
+    case "undefined": {
+			return undefined
+    }
+  }
+}
+
 export default defineComponent({
 	setup() {
-		const route = useRoute()
-		const name = route.params.image
-		if (typeof name !== "string") {
-			// TODO
-			return
+		const fixRoute = () => {
+			const param = getRouteParam()
+			if (param === undefined || images[param] === undefined) {
+				const route = useRoute()
+				// Todo: Use first image from list
+				route.params.image = "dior"
+			}
 		}
+		
+		onBeforeRouteUpdate(async (to, from) => {
+			fixRoute()
+		})
+		
+		fixRoute()
+
+		const name = getRouteParam()
+		// After fixing the route, we should get back a valid image name
+		assertDefined(name)
+
 		const info = images[name]
+		assertDefined(info)
 
 		const srcsets: Srcsets = {
 			jpg: [],

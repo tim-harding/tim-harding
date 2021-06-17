@@ -17,6 +17,17 @@ const routerConfig = {
             component: Portfolio,
             children: [
                 {
+                    path: "",
+                    redirect: {
+                        name: "carousel-image",
+                        params: {
+                            // Todo: First image in list
+                            image: "whatever",
+                        }
+                    }
+                },
+                {
+                    name: "carousel-image",
                     path: ":image",
                     component: HImage,
                 }

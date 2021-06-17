@@ -15,20 +15,6 @@ export default defineComponent({
     HHeader,
   },
 })
-
-function imageId(param: string | string[]): string {
-  switch (typeof param) {
-    case "string": {
-      return param
-    }
-    default: {
-      if (param.length === 0) {
-        return ""
-      }
-      return param[0]
-    }
-  }
-}
 </script>
 
 <style lang="scss" module>
