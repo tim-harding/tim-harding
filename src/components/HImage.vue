@@ -1,5 +1,5 @@
 <template lang="pug">
-li(:class="$style.item")
+div(:class="$style.item")
 	picture(:class="$style.picture")
 		source(
 			:srcset="image.srcset.webp",

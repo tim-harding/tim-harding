@@ -1,8 +1,15 @@
 <template lang="pug">
 div(:class="$style.root")
   HNavCursors(:class="$style.cursors")
-  //- HImage(:class="$style.carousel")
-  router-view(:class="$style.carousel")
+  router-view(:class="$style.carousel", v-slot="{ Component, route }")
+    transition(
+      name="fade",
+      :enter-active-class="$style.fadeEnterActive",
+      :leave-active-class="$style.fadeLeaveActive",
+      :enter-from-class="$style.fadeEnterFrom",
+      :leave-from-class="$style.fadeLeaveFrom",
+    )
+      component(:is="Component", :key="route.path")
   HHeader(:class="$style.header")
 </template>
 
@@ -17,7 +24,7 @@ export default defineComponent({
     HHeader,
     HImage,
     HNavCursors,
-},
+  },
 })
 </script>
 
@@ -44,5 +51,15 @@ export default defineComponent({
 
 .header {
   grid-area: header;
+}
+
+.fadeEnterActive,
+.fadeLeaveActive {
+  transition: opacity 0.25s ease;
+}
+
+.fadeEnterFrom,
+.fadeLeaveTo {
+  opacity: 0;
 }
 </style>
