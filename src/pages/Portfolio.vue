@@ -1,9 +1,7 @@
 <template lang="pug">
 div(:class="$style.root")
-  HContactSheet(:class="$style.contactSheet", v-if="isContactSheet")
-  router-view(:class="$style.carousel", v-slot="{ Component, route }", v-else)
+  router-view(:class="$style.carousel", v-slot="{ Component, route }")
     transition(
-      name="fade",
       :enter-active-class="$style.fadeEnterActive",
       :leave-active-class="$style.fadeLeaveActive",
       :enter-from-class="$style.fadeEnterFrom",
@@ -16,22 +14,11 @@ div(:class="$style.root")
 <script lang="ts">
 import { defineComponent } from "@vue/runtime-core";
 import HHeader from ".././components/HHeader.vue"
-import HContactSheet from "../components/HContactSheet.vue";
-import { ref } from "vue";
 
 export default defineComponent({
   components: {
     HHeader,
-    HContactSheet,
   },
-  
-  setup() {
-    const isContactSheet = ref(true)
-    
-    return {
-      isContactSheet,
-    }
-  }
 })
 </script>
 
@@ -41,7 +28,7 @@ export default defineComponent({
   height: 100vh;
   overflow: hidden;
 
-  grid-template-columns: 100vw;
+  grid-template-columns: 1fr;
   grid-template-rows: 1fr auto;
   grid-template-areas:
     "carousel"
@@ -49,10 +36,6 @@ export default defineComponent({
 }
 
 .carousel {
-  grid-area: carousel;
-}
-
-.contactSheet {
   grid-area: carousel;
 }
 

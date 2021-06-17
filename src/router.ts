@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router"
 import Portfolio from "./pages/Portfolio.vue"
 import HCarousel from "./components/HCarousel.vue"
+import HContactSheet from "./components/HContactSheet.vue"
 import { imageForName, images } from "./shared/images"
 import { getRouteParam } from "./shared/misc"
 
@@ -14,23 +15,28 @@ const routerConfig = {
 			}
 		},
 		{
-			path: "/portfolio",
-			redirect: {
-				name: "carousel",
-				params: {
-					image: images[0]!.name,
-				},
-			},
-		},
-		{
 			name: "portfolio",
 			path: "/portfolio",
 			component: Portfolio,
 			children: [
 				{
+					path: "",
+					redirect: {
+						name: "carousel",
+						params: {
+							image: images[0]!.name,
+						},
+					},
+				},
+				{
 					name: "carousel",
 					path: ":image",
 					component: HCarousel,
+				},
+				{
+					name: "contact_sheet",
+					path: "contact_sheet",
+					component: HContactSheet,
 				},
 			],
 		},

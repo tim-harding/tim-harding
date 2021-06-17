@@ -1,8 +1,8 @@
 <template lang="pug">
 div(:class="$style.root")
-	router-link(:class="$style.left", :to="links.previous")
-	button(:class="$style.center", @click="$emit('contactSheet')")
-	router-link(:class="$style.right", :to="links.next")
+	router-link(:class="$style.previous", :to="transport.previous")
+	router-link(:class="$style.center", :to="contactSheet")
+	router-link(:class="$style.next", :to="transport.next")
 </template>
 
 <script lang="ts">
@@ -13,14 +13,10 @@ import { imageIndex, images } from "../shared/images";
 import { getRouteParam, mod } from "../shared/misc";
 
 export default defineComponent({
-	emits: [
-		"contactSheet",
-	],
-
 	setup() {
 		const route = useRoute()
 
-		const links = computed(() => {
+		const transport = computed(() => {
 			const name = getRouteParam(route)
 			assertDefined(name)
 
@@ -48,9 +44,14 @@ export default defineComponent({
 				next,
 			}
 		})
-		
+
+		const contactSheet = {
+			name: "contact_sheet",
+		}
+
 		return {
-			links,
+			transport,
+			contactSheet,
 		}
 	}
 })
@@ -60,13 +61,13 @@ export default defineComponent({
 .root {
 	grid-template-columns: 1fr 2fr 1fr;
 	grid-template-rows: 1fr;
-	grid-template-areas: "left center right";
+	grid-template-areas: "previous center next";
 	width: 100vw;
 	z-index: 1;
 }
 
-.left {
-	grid-area: left;
+.previous {
+	grid-area: previous;
 	cursor: url("/icons/arrow-left.svg") 0 16, auto;
 }
 
@@ -75,8 +76,8 @@ export default defineComponent({
 	cursor: url("/icons/grid.svg") 12 12, auto;
 }
 
-.right {
-	grid-area: right;
+.next {
+	grid-area: next;
 	cursor: url("/icons/arrow-right.svg") 32 16, auto;
 }
 </style>
