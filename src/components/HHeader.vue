@@ -39,6 +39,6 @@ export default defineComponent({
 }
 
 .darkMode {
-
+	justify-self: end;
 }
 </style>

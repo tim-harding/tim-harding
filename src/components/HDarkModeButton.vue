@@ -1,7 +1,8 @@
 <template lang="pug">
-button(:class="$style.root")
-	HSunIcon(:class="$style.sun")
-	HMoonIcon(:class="$style.moon")
+button(:class="$style.root", @click="isDarkMode = !isDarkMode")
+	div(:class="[$style.container, { [$style.dark]: isDarkMode }]")
+		HSunIcon(:class="$style.sun")
+		HMoonIcon(:class="$style.moon")
 </template>
 
 <script lang="ts">
@@ -19,7 +20,7 @@ export default defineComponent({
 
 	setup() {
 		const isDarkMode = ref(false)
-		
+
 		return {
 			isDarkMode,
 		}
@@ -28,16 +29,41 @@ export default defineComponent({
 </script>
 
 <style lang="scss" module>
+$size: 2.5rem;
+
 .root {
-	grid-template-columns: repeat(2, 100%);
-	grid-template-rows: 1fr;
-	background-color: var(--light-3);
+	background-color: var(--light-1);
 	border-radius: 0.25rem;
-	padding: 0.5rem;
+	width: $size;
+	height: $size;
+	overflow: hidden;
+	cursor: pointer;
+
+	&:hover,
+	&:focus-visible {
+		background-color: var(--light-2);
+	}
+
+	&:active {
+		background-color: var(--light-3);
+	}
 }
 
-.sun, .moon {
+.container {
+	grid-template-columns: repeat(2, $size);
+	grid-template-rows: $size;
+	justify-items: center;
+	align-items: center;
+	transition: transform 0.25s;
+}
+
+.sun,
+.moon {
 	width: 1.5rem;
 	height: 1.5rem;
+}
+
+.dark {
+	transform: translateX(-$size);
 }
 </style>

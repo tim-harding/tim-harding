@@ -49,6 +49,9 @@ export default defineComponent({
 .link {
 	cursor: pointer;
 	border-radius: 0.125rem;
+	border-style: solid;
+	border-color: var(--light-3);
+	border-width: 1px;
 	overflow: hidden;
 
 	&:hover,
