@@ -16,7 +16,7 @@ li(:class="$style.item")
 
 <script lang="ts">
 import { computed, defineComponent } from "@vue/runtime-core";
-import { onBeforeRouteUpdate, useRoute } from "vue-router";
+import { useRoute } from "vue-router";
 import { assertDefined } from "../shared/assertions";
 import { imageForName, sizes4k, sizesNo4k } from "../shared/images"
 import { getRouteParam } from "../shared/misc";

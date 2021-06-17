@@ -1,7 +1,8 @@
 <template lang="pug">
 div(:class="$style.root")
   HNavCursors(:class="$style.cursors")
-  HImage(:class="$style.carousel")
+  //- HImage(:class="$style.carousel")
+  router-view(:class="$style.carousel")
   HHeader(:class="$style.header")
 </template>
 

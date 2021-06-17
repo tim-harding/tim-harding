@@ -29,7 +29,7 @@ export default defineComponent({
 
 			const previousIndex = mod(index - 1, images.length)
 			const previous = {
-				name: "portfolio",
+				name: "carousel",
 				params: {
 					image: images[previousIndex]!.name,
 				},
@@ -37,7 +37,7 @@ export default defineComponent({
 
 			const nextIndex = mod(index + 1, images.length)
 			const next = {
-				name: "portfolio",
+				name: "carousel",
 				params: {
 					image: images[nextIndex]!.name,
 				},
