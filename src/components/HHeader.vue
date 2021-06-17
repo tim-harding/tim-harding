@@ -1,17 +1,25 @@
 <template lang="pug">
 header(:class="$style.root")
 	h1(:class="$style.title") Harding
+	HDarkModeButton(:class="$style.darkMode")
 </template>
 
 <script lang="ts">
 import { defineComponent } from "@vue/runtime-core";
+import HDarkModeButton from "./HDarkModeButton.vue";
 
 export default defineComponent({
+	components: {
+		HDarkModeButton,
+	}
 })
 </script>
 
 <style lang="scss" module>
 .root {
+	grid-template-columns: repeat(2, 1fr);
+	grid-template-rows: 1fr;
+	grid-template-areas: "title darkMode";
 	align-items: center;
 
 	border-top-style: solid;
@@ -28,5 +36,9 @@ export default defineComponent({
 	color: var(--dark-4);
 	cursor: default;
 	user-select: none;
+}
+
+.darkMode {
+
 }
 </style>

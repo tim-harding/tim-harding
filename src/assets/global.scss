@@ -1,5 +1,5 @@
 // Reset
-* {
+*:not(svg *) {
     all: unset;
     box-sizing: border-box;
     display: grid;

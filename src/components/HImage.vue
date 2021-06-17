@@ -84,5 +84,6 @@ export default defineComponent({
 
 .image {
 	width: 100%;
+	aspect-ratio: 2 / 1;
 }
 </style>
