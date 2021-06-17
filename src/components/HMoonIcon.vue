@@ -1,16 +1,32 @@
-<template>
-	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" :class="$style.root">
-		<title>Moon</title>
-		<path
-			d="M10.423839,3 C10.1490474,3.80837289 10,4.67486099 10,5.57616098 C10,9.99443898 13.581722,13.576161 18,13.576161 C18.9013,13.576161 19.7677881,13.4271135 20.576161,13.152322 C19.5038921,16.3066875 16.516978,18.576161 13,18.576161 C8.581722,18.576161 5,14.994439 5,10.576161 C5,7.05918297 7.26947343,4.07226889 10.423839,3 Z"
-		/>
-	</svg>
+<template lang="pug">
+svg(
+	xmlns="http://www.w3.org/2000/svg" 
+	viewBox="0 0 24 24" 
+)
+	title Moon
+	mask(id="moonMask")
+		rect(
+			width="24"
+			height="24"
+			fill="white"
+		)
+		circle(
+			fill="black"
+			cx="8"
+			cy="8"
+			r="7"
+		)
+	circle(
+		:class="$style.fill"
+		cx="12"
+		cy="12"
+		r="9"
+		mask="url(#moonMask)"
+	)
 </template>
 
 <style lang="scss" module>
-.root {
-	stroke-linecap: square;
-	stroke-linejoin: miter;
+.fill {
 	fill: var(--dark-4);
 }
 </style>
