@@ -1,86 +1,70 @@
 export interface ImageInfo {
-    name: string,
     alt: string,
     has4k: boolean,
 }
 
-export const images: ReadonlyArray<ImageInfo> = [
-    {
-        name: "absolut_vodka",
+export const images: Record<string, ImageInfo> = {
+    absolut_vodka: {
         alt: "Absolut Vodka bottle",
         has4k: true,
     },
-    {
-        name: "aventador",
+    aventador: {
         alt: "Lamborghini Aventador sportscar",
         has4k: true,
     },
-    {
-        name: "beats",
+    beats: {
         alt: "Beats by Dr. Dre headphones",
         has4k: true,
     },
-    {
-        name: "bombay_sapphire",
+    bombay_sapphire: {
         alt: "Bombay Sapphire gin bottle",
         has4k: false,
     },
-    {
-        name: "dior",
+    dior: {
         alt: "Dior perfume bottle",
         has4k: true,
     },
-    {
-        name: "ferrari_italia",
+    ferrari_italia: {
         alt: "Ferrari Italia sportscar",
         has4k: true,
     },
-    {
-        name: "hugo_boss",
+    hugo_boss: {
         alt: "Hugo Boss watch",
         has4k: true,
     },
-    {
-        name: "mackie",
+    mackie: {
         alt: "Mackie speakers",
         has4k: false,
     },
-    {
-        name: "michael_kors",
+    michael_kors: {
         alt: "Michael Kors watch",
         has4k: true,
     },
-    {
-        name: "nixon",
+    nixon: {
         alt: "Nixon watch",
         has4k: true,
     },
-    {
-        name: "ring",
+    ring: {
         alt: "A ring",
         has4k: false,
     },
-    {
-        name: "tiffany",
+    tiffany: {
         alt: "Tiffany perfume",
         has4k: false,
     },
-    {
-        name: "tincup",
+    tincup: {
         alt: "Tincup whiskey",
         has4k: true,
     },
-    {
-        name: "versace",
+    versace: {
         alt: "Versace perfume",
         has4k: true,
     },
-    {
-        name: "wii",
+    wii: {
         alt: "A wiimote controller",
         has4k: true,
     },
-]
+}
 
 export const sizes4k = [
     540,

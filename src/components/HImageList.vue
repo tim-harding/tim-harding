@@ -31,41 +31,40 @@ interface Image {
 	},
 	fallback: string,
 	alt: string,
-	key: number,
+	key: string,
 }
 
 export default defineComponent({
 	setup() {
 		const images: Image[] = [];
-		for (let i = 0; i < rawImages.length; i++) {
-			const raw = rawImages[i]
+		for (const [name, info] of Object.entries(rawImages)) {
 			const srcsets: Srcsets = {
 				jpg: [],
 				webp: [],
 			};
-			const sizes = raw.has4k ? sizes4k : sizesNo4k;
+			const sizes = info.has4k ? sizes4k : sizesNo4k;
 			for (const size of sizes) {
 				for (const [format, srcset] of Object.entries(srcsets)) {
-					const source = `/images/${raw.name}_${size}.${format} ${size}w`
+					const source = `/images/${name}_${size}.${format} ${size}w`
 					srcset.push(source)
 				}
 			}
-			const fallback = `/images/${raw.name}_960.jpg`
+			const fallback = `/images/${name}_960.jpg`
 			const image: Image = {
 				srcset: {
 					jpg: srcsets.jpg.join(", "),
 					webp: srcsets.webp.join(", "),
 				},
 				fallback,
-				alt: raw.alt,
-				key: i,
+				alt: info.alt,
+				key: name,
 			}
 			images.push(image)
 		}
-		
+
 		const sizes = sizesNo4k.map(size => `(max-width: ${size}px) ${size}px`)
 			.join(", ")
-		
+
 		return {
 			images,
 			sizes: `${sizes}, 3840px`,
