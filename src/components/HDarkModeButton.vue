@@ -1,6 +1,6 @@
 <template lang="pug">
-button(:class="$style.root", @click="isDarkMode = !isDarkMode")
-	div(:class="[$style.container, { [$style.dark]: isDarkMode }]")
+button(:class="$style.root", @click="toggleIsDark()")
+	div(:class="[$style.container, { [$style.dark]: isDark }]")
 		HSunIcon(:class="$style.sun")
 		HMoonIcon(:class="$style.moon")
 </template>
@@ -9,7 +9,7 @@ button(:class="$style.root", @click="isDarkMode = !isDarkMode")
 import { defineComponent } from "@vue/runtime-core";
 import HSunIcon from "./HSunIcon.vue";
 import HMoonIcon from "./HMoonIcon.vue";
-import { ref } from "vue";
+import { settings } from "../shared/settings";
 
 
 export default defineComponent({
@@ -19,10 +19,13 @@ export default defineComponent({
 	},
 
 	setup() {
-		const isDarkMode = ref(false)
+		const toggleIsDark = () => {
+			settings.toggleIsDark()
+		}
 
 		return {
-			isDarkMode,
+			isDark: settings.isDark,
+			toggleIsDark,
 		}
 	}
 })
