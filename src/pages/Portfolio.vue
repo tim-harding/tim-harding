@@ -1,7 +1,7 @@
 <template lang="pug">
 div(:class="$style.root")
-  HNavCursors(:class="$style.cursors")
-  router-view(:class="$style.carousel", v-slot="{ Component, route }")
+  HContactSheet(:class="$style.contactSheet", v-if="isContactSheet")
+  router-view(:class="$style.carousel", v-slot="{ Component, route }", v-else)
     transition(
       name="fade",
       :enter-active-class="$style.fadeEnterActive",
@@ -16,15 +16,22 @@ div(:class="$style.root")
 <script lang="ts">
 import { defineComponent } from "@vue/runtime-core";
 import HHeader from ".././components/HHeader.vue"
-import HImage from "../components/HImage.vue";
-import HNavCursors from "../components/HNavCursors.vue";
+import HContactSheet from "../components/HContactSheet.vue";
+import { ref } from "vue";
 
 export default defineComponent({
   components: {
     HHeader,
-    HImage,
-    HNavCursors,
+    HContactSheet,
   },
+  
+  setup() {
+    const isContactSheet = ref(false)
+    
+    return {
+      isContactSheet,
+    }
+  }
 })
 </script>
 
@@ -41,11 +48,11 @@ export default defineComponent({
     "header";
 }
 
-.cursors {
+.carousel {
   grid-area: carousel;
 }
 
-.carousel {
+.contactSheet {
   grid-area: carousel;
 }
 

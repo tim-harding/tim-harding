@@ -1,5 +1,7 @@
 <template lang="pug">
-HImage(:name="name")
+div(:class="$style.root")
+	HImage(:class="$style.image", :name="name")
+	HNavCursors(:class="$style.cursors")
 </template>
 
 <script lang="ts">
@@ -9,10 +11,12 @@ import { useRoute } from "vue-router";
 import { assertDefined } from "../shared/assertions";
 import { getRouteParam } from "../shared/misc";
 import HImage from "./HImage.vue"
+import HNavCursors from "../components/HNavCursors.vue";
 
 export default defineComponent({
 	components: {
 		HImage,
+		HNavCursors,
 	},
 
 	setup() {
@@ -32,4 +36,20 @@ export default defineComponent({
 </script>
 
 <style lang="scss" module>
+.root {
+	grid-template-rows: 1fr;
+	grid-template-columns: 1fr;
+	grid-template-areas: "center";
+	background-color: var(--light-1);
+}
+
+.image {
+	grid-area: center;
+	padding: 2rem;
+	width: 100%;
+}
+
+.cursors {
+	grid-area: center;
+}
 </style>

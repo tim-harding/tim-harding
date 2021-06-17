@@ -1,17 +1,16 @@
 <template lang="pug">
-div(:class="$style.item")
-	picture(:class="$style.picture")
-		source(
-			:srcset="image.srcset.webp",
-			:sizes="image.sizesQuery",
-			type="image/webp"
-		)
-		source(
-			:srcset="image.srcset.jpg",
-			:sizes="image.sizesQuery",
-			type="image/jpeg"
-		)
-		img(:src="image.fallback", :alt="image.alt", :class="$style.image")
+picture(:class="$style.root")
+	source(
+		:srcset="image.srcset.webp",
+		:sizes="image.sizesQuery",
+		type="image/webp"
+	)
+	source(
+		:srcset="image.srcset.jpg",
+		:sizes="image.sizesQuery",
+		type="image/jpeg"
+	)
+	img(:src="image.fallback", :alt="image.alt", :class="$style.image")
 </template>
 
 <script lang="ts">
@@ -78,15 +77,7 @@ export default defineComponent({
 </script>
 
 <style lang="scss" module>
-.item {
-	grid-template-rows: 1fr;
-	grid-template-columns: repeat(auto-fill, 100vw);
-	grid-auto-flow: column;
-	background-color: var(--light-1);
-}
-
-.picture {
-	padding: 2rem;
+.root {
 	justify-content: center;
 	align-content: center;
 }
