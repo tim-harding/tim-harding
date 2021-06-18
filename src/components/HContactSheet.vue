@@ -35,7 +35,7 @@ export default defineComponent({
 
 <style lang="scss" module>
 .root {
-	background-color: var(--light-1);
+	background-color: var(--primary-2);
 }
 
 .list {
@@ -50,17 +50,17 @@ export default defineComponent({
 	cursor: pointer;
 	border-radius: 0.125rem;
 	border-style: solid;
-	border-color: var(--light-3);
+	border-color: var(--primary-4);
 	border-width: 1px;
 	overflow: hidden;
 
 	&:hover,
 	&:focus-visible {
-		box-shadow: 0 0 0 4px var(--light-1), 0 0 0 8px var(--frost-1);
+		box-shadow: 0 0 0 4px var(--primary-2), 0 0 0 8px var(--primary-2);
 	}
 
 	&:active {
-		box-shadow: 0 0 0 2px var(--light-1), 0 0 0 8px var(--frost-3);
+		box-shadow: 0 0 0 2px var(--primary-2), 0 0 0 8px var(--primary-4);
 	}
 }
 </style>

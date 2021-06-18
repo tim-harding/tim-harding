@@ -24,16 +24,17 @@ export default defineComponent({
 
 	border-top-style: solid;
 	border-top-width: 1px;
-	border-top-color: var(--light-3);
+	border-top-color: var(--primary-4);
 	padding: 1rem;
 	padding-left: 2rem;
 	padding-right: 2rem;
+	background-color: var(--primary-1);
 }
 
 .title {
 	font-size: 2rem;
 	font-weight: 700;
-	color: var(--dark-4);
+	color: var(--secondary-4);
 	cursor: default;
 	user-select: none;
 }

@@ -27,6 +27,6 @@ svg(
 
 <style lang="scss" module>
 .fill {
-	fill: var(--dark-4);
+	fill: var(--secondary-4);
 }
 </style>

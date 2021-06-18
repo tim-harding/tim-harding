@@ -40,12 +40,12 @@ export default defineComponent({
 
 <style lang="scss" module>
 .stroke {
-	stroke: var(--dark-4);
+	stroke: var(--secondary-4);
 	stroke-width: 2;
 	stroke-linecap: round;
 }
 
 .fill {
-	fill: var(--dark-4);
+	fill: var(--secondary-4);
 }
 </style>

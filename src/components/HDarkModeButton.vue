@@ -35,7 +35,7 @@ export default defineComponent({
 $size: 2.5rem;
 
 .root {
-	background-color: var(--light-1);
+	background-color: var(--primary-2);
 	border-radius: 0.25rem;
 	width: $size;
 	height: $size;
@@ -44,11 +44,11 @@ $size: 2.5rem;
 
 	&:hover,
 	&:focus-visible {
-		background-color: var(--light-2);
+		background-color: var(--primary-3);
 	}
 
 	&:active {
-		background-color: var(--light-3);
+		background-color: var(--primary-4);
 	}
 }
 

@@ -40,7 +40,7 @@ export default defineComponent({
 	grid-template-rows: 1fr;
 	grid-template-columns: 1fr;
 	grid-template-areas: "center";
-	background-color: var(--light-1);
+	background-color: var(--primary-2);
 }
 
 .image {
