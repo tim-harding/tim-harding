@@ -1,6 +1,10 @@
 <template lang="pug">
-HPortfolioMobile(v-if="isMobile", :class="$style.root")
-HPortfolioDesktop(v-else, :class="$style.root")
+transition(
+  :enter-from-class="$style.fadeEnterFrom",
+  :leave-to-class="$style.fadeLeaveTo",
+)
+  HPortfolioMobile(v-if="isMobile", :class="$style.root")
+  HPortfolioDesktop(v-else, :class="$style.root")
 </template>
 
 <script lang="ts">
@@ -32,5 +36,10 @@ export default defineComponent({
 .root {
   --carousel-bg: var(--primary-2);
   background-color: var(--carousel-bg);
+}
+
+.fadeEnterFrom,
+.fadeLeaveTo {
+  opacity: 0;
 }
 </style>
