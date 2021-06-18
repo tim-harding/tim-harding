@@ -3,6 +3,7 @@
     all: unset;
     box-sizing: border-box;
     display: grid;
+    transition: 0.25s all;
 }
 
 head *,

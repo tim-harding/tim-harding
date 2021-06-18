@@ -57,7 +57,6 @@ $size: 2.5rem;
 	grid-template-rows: $size;
 	justify-items: center;
 	align-items: center;
-	transition: transform 0.25s;
 }
 
 .sun,
