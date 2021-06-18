@@ -1,69 +1,29 @@
 <template lang="pug">
-div(:class="$style.root")
-  HHeader(:class="$style.header")
-  main(:class="$style.carousel")
-    router-view(v-slot="{ Component, route }")
-      transition(
-        :enter-from-class="$style.fadeEnterFrom",
-        :leave-to-class="$style.fadeLeaveTo",
-      )
-        component(:is="Component", :key="route.path")
+HPortfolioMobile(v-if="isMobile")
+HPortfolioDesktop(v-else)
 </template>
 
 <script lang="ts">
-import { defineComponent } from "@vue/runtime-core";
-import HHeader from ".././components/HHeader.vue"
+import { defineComponent, ref } from "@vue/runtime-core";
+import HPortfolioMobile from "../components/HPortfolioMobile.vue";
+import HPortfolioDesktop from "../components/HPortfolioDesktop.vue";
 
 export default defineComponent({
   components: {
-    HHeader,
+    HPortfolioMobile,
+    HPortfolioDesktop,
   },
+  
+  setup() {
+    const query = window.matchMedia("(max-width: 600px)")
+    const isMobile = ref(query.matches)
+    query.onchange = function(event) {
+      isMobile.value = this.matches
+    }
+    
+    return {
+      isMobile,
+    }
+  }
 })
 </script>
-
-<style lang="scss" module>
-.root {
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
-
-  grid-template-columns: 1fr;
-  grid-template-rows: 1fr auto;
-  grid-template-areas:
-    "carousel"
-    "header";
-}
-
-.carousel {
-  grid-area: carousel;
-  grid-template-rows: 1fr;
-  grid-template-columns: 1fr;
-  grid-template-areas: "center";
-  --carousel-bg: var(--primary-2);
-  background-color: var(--carousel-bg);
-  
-  & > * {
-    grid-area: center;
-  }
-}
-
-.header {
-  grid-area: header;
-  --header-bg: var(--primary-1);
-}
-
-:global(.dark) {
-  .carousel {
-    --carousel-bg: var(--primary-1);
-  }
-  
-  .header {
-    --header-bg: var(--primary-2);
-  }
-}
-
-.fadeEnterFrom,
-.fadeLeaveTo {
-  opacity: 0;
-}
-</style>
