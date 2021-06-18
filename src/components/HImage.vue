@@ -1,5 +1,5 @@
 <template lang="pug">
-picture(:class="$style.root")
+picture(:class="[$style.root, { [$style.show]: isLoaded }]")
 	source(
 		:srcset="image.srcset.webp",
 		:sizes="image.sizesQuery",
@@ -10,11 +10,12 @@ picture(:class="$style.root")
 		:sizes="image.sizesQuery",
 		type="image/jpeg"
 	)
-	img(:src="image.fallback", :alt="image.alt", :class="$style.image")
+	img(:src="image.fallback", :alt="image.alt", :class="$style.image", @load="isLoaded = true")
 </template>
 
 <script lang="ts">
 import { computed, defineComponent } from "@vue/runtime-core";
+import { ref } from "vue";
 import { assertDefined } from "../shared/assertions";
 import { imageForName, sizes4k, sizesNo4k } from "../shared/images"
 
@@ -69,8 +70,11 @@ export default defineComponent({
 			}
 		})
 
+		const isLoaded = ref(false)
+
 		return {
 			image,
+			isLoaded,
 		}
 	}
 })
@@ -80,6 +84,11 @@ export default defineComponent({
 .root {
 	justify-content: center;
 	align-content: center;
+	opacity: 0;
+}
+
+.show {
+	opacity: 1;
 }
 
 .image {

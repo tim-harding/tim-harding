@@ -9,7 +9,6 @@ class Settings {
 
 	private setIsDark(value: boolean) {
 		this._isDark.value = value
-		console.log(value)
 		localStorage.setItem("isDark", JSON.stringify(value))
 	}
 

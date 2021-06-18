@@ -53,18 +53,16 @@ export default defineComponent({
 .link {
 	cursor: pointer;
 	border-radius: 0.125rem;
-	border-style: solid;
-	border-color: var(--primary-4);
-	border-width: 1px;
 	overflow: hidden;
+	transition: all 0.125s;
 
 	&:hover,
 	&:focus-visible {
-		box-shadow: 0 0 0 4px var(--primary-2), 0 0 0 8px var(--secondary-2);
+		box-shadow: 0 0 0 4px var(--primary-2), 0 0 0 8px var(--secondary-4);
 	}
 
 	&:active {
-		box-shadow: 0 0 0 2px var(--primary-2), 0 0 0 8px var(--secondary-4);
+		box-shadow: 0 0 0 2px var(--primary-2), 0 0 0 8px var(--secondary-1);
 	}
 }
 </style>
