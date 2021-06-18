@@ -5,7 +5,7 @@ div(:class="$style.root")
     router-view(v-slot="{ Component, route }")
       transition(
         :enter-from-class="$style.fadeEnterFrom",
-        :leave-from-class="$style.fadeLeaveFrom",
+        :leave-to-class="$style.fadeLeaveTo",
       )
         component(:is="Component", :key="route.path")
 </template>
