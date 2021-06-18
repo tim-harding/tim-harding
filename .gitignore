@@ -7,3 +7,5 @@ dist-ssr
 *.webp
 *.jpg
 *.woff2
+favicon.*
+*.cache

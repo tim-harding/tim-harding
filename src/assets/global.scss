@@ -1,5 +1,5 @@
 // Reset
-*:not(svg *) {
+*:not(svg, line, circle, mask, rect, title) {
     all: unset;
     box-sizing: border-box;
     display: grid;
