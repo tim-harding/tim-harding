@@ -4,7 +4,6 @@ div(:class="$style.root")
   main(:class="$style.carousel")
     router-view(v-slot="{ Component, route }")
       transition(
-        :class="$style.transition",
         :enter-from-class="$style.fadeEnterFrom",
         :leave-to-class="$style.fadeLeaveTo",
       )
@@ -61,10 +60,6 @@ export default defineComponent({
   .header {
     --header-bg: var(--primary-2);
   }
-}
-
-.transition {
-  transition: opacity 0.25s, background-color 0.25s;
 }
 
 .fadeEnterFrom,

@@ -1,6 +1,6 @@
 <template lang="pug">
 header(:class="$style.root")
-	h1(:class="$style.title") Harding
+	router-link(:class="$style.title", to="/") Harding
 	HDarkModeButton(:class="$style.darkMode")
 </template>
 
@@ -11,7 +11,7 @@ import HDarkModeButton from "./HDarkModeButton.vue";
 export default defineComponent({
 	components: {
 		HDarkModeButton,
-	}
+	},
 })
 </script>
 
@@ -26,7 +26,7 @@ export default defineComponent({
 	border-top-width: 1px;
 	border-top-color: var(--primary-4);
 	padding: 1rem;
-	padding-left: 2rem;
+	padding-left: 1.5rem;
 	padding-right: 2rem;
 	background-color: var(--header-bg);
 }
@@ -39,8 +39,23 @@ export default defineComponent({
 	font-size: 2rem;
 	font-weight: 700;
 	color: var(--secondary-4);
-	cursor: default;
+	cursor: pointer;
 	user-select: none;
+	width: min-content;
+	padding: 0.25rem;
+	padding-left: 1rem;
+	padding-right: 1rem;
+	border-radius: 0.25rem;
+	
+	&:hover, &:focus-visible {
+		color: var(--secondary-3);
+		background-color: var(--primary-3);
+	}
+	
+	&:active {
+		color: var(--secondary-1);
+		background-color: var(--primary-4);
+	}
 }
 
 .darkMode {
