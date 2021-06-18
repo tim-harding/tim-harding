@@ -35,11 +35,7 @@ export default defineComponent({
 
 <style lang="scss" module>
 .root {
-	background-color: var(--primary-2);
-}
-
-:global(.dark) .root {
-	background-color: var(--primary-1);
+	background-color: var(--carousel-bg);
 }
 
 .list {

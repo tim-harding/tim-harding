@@ -4,6 +4,7 @@ div(:class="$style.root")
   main(:class="$style.carousel")
     router-view(v-slot="{ Component, route }")
       transition(
+        :class="$style.transition",
         :enter-from-class="$style.fadeEnterFrom",
         :leave-to-class="$style.fadeLeaveTo",
       )
@@ -39,6 +40,8 @@ export default defineComponent({
   grid-template-rows: 1fr;
   grid-template-columns: 1fr;
   grid-template-areas: "center";
+  --carousel-bg: var(--primary-2);
+  background-color: var(--carousel-bg);
   
   & > * {
     grid-area: center;
@@ -47,6 +50,21 @@ export default defineComponent({
 
 .header {
   grid-area: header;
+  --header-bg: var(--primary-1);
+}
+
+:global(.dark) {
+  .carousel {
+    --carousel-bg: var(--primary-1);
+  }
+  
+  .header {
+    --header-bg: var(--primary-2);
+  }
+}
+
+.transition {
+  transition: opacity 0.25s, background-color 0.25s;
 }
 
 .fadeEnterFrom,

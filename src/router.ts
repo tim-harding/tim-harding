@@ -11,8 +11,11 @@ const routerConfig = {
 		{
 			path: "/",
 			redirect: {
-				name: "portfolio",
-			}
+				name: "carousel",
+				params: {
+					image: images[0]!.name,
+				},
+			},
 		},
 		{
 			name: "portfolio",

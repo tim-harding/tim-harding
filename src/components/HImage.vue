@@ -85,6 +85,7 @@ export default defineComponent({
 	justify-content: center;
 	align-content: center;
 	opacity: 0;
+	transition: opacity 0.25s;
 }
 
 .show {

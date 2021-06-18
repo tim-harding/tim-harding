@@ -1,5 +1,5 @@
 <template lang="pug">
-router-view(:class="[isDark ? $style.dark : $style.light, isDark ? 'dark' : 'light']")
+router-view(:class="[isDark ? $style.dark : $style.light, isDark ? 'dark' : 'light', $style.root]")
 </template>
 
 <script lang="ts">import { defineComponent } from "@vue/runtime-core";

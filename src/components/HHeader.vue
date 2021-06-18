@@ -28,7 +28,7 @@ export default defineComponent({
 	padding: 1rem;
 	padding-left: 2rem;
 	padding-right: 2rem;
-	background-color: var(--primary-1);
+	background-color: var(--header-bg);
 }
 
 :global(.dark) .root {

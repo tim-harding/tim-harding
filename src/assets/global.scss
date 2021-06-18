@@ -3,7 +3,7 @@
     all: unset;
     box-sizing: border-box;
     display: grid;
-    transition: background-color 0.25s, transform 0.25s, opacity 0.25s, filter 0.25s;
+    transition: background-color 0.25s;
 }
 
 head *,
