@@ -1,6 +1,6 @@
 <template lang="pug">
-HPortfolioMobile(v-if="isMobile")
-HPortfolioDesktop(v-else)
+HPortfolioMobile(v-if="isMobile", :class="$style.root")
+HPortfolioDesktop(v-else, :class="$style.root")
 </template>
 
 <script lang="ts">
@@ -15,7 +15,7 @@ export default defineComponent({
   },
   
   setup() {
-    const query = window.matchMedia("(max-width: 600px)")
+    const query = window.matchMedia("(max-aspect-ratio: 2/3)")
     const isMobile = ref(query.matches)
     query.onchange = function(event) {
       isMobile.value = this.matches
@@ -27,3 +27,10 @@ export default defineComponent({
   }
 })
 </script>
+
+<style lang="scss" module>
+.root {
+  --carousel-bg: var(--primary-2);
+  background-color: var(--carousel-bg);
+}
+</style>

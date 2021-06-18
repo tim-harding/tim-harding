@@ -25,10 +25,13 @@ export default defineComponent({
 	border-top-style: solid;
 	border-top-width: 1px;
 	border-top-color: var(--primary-4);
+	border-bottom-style: solid;
+	border-bottom-width: 1px;
+	border-bottom-color: var(--primary-4);
 	padding: 1rem;
 	padding-left: 1.5rem;
 	padding-right: 2rem;
-	background-color: var(--header-bg);
+	background-color: var(--primary-1);
 }
 
 :global(.dark) .root {

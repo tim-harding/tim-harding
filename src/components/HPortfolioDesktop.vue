@@ -39,8 +39,6 @@ export default defineComponent({
   grid-template-rows: 1fr;
   grid-template-columns: 1fr;
   grid-template-areas: "center";
-  --carousel-bg: var(--primary-2);
-  background-color: var(--carousel-bg);
   
   & > * {
     grid-area: center;
