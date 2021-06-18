@@ -38,6 +38,10 @@ export default defineComponent({
 	background-color: var(--primary-2);
 }
 
+:global(.dark) .root {
+	background-color: var(--primary-1);
+}
+
 .list {
 	grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
 	grid-template-rows: repeat(auto-fit, auto);
@@ -56,11 +60,11 @@ export default defineComponent({
 
 	&:hover,
 	&:focus-visible {
-		box-shadow: 0 0 0 4px var(--primary-2), 0 0 0 8px var(--primary-2);
+		box-shadow: 0 0 0 4px var(--primary-2), 0 0 0 8px var(--secondary-2);
 	}
 
 	&:active {
-		box-shadow: 0 0 0 2px var(--primary-2), 0 0 0 8px var(--primary-4);
+		box-shadow: 0 0 0 2px var(--primary-2), 0 0 0 8px var(--secondary-4);
 	}
 }
 </style>

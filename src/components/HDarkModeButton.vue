@@ -41,6 +41,7 @@ $size: 2.5rem;
 	height: $size;
 	overflow: hidden;
 	cursor: pointer;
+	transition: all 0.125s;
 
 	&:hover,
 	&:focus-visible {
@@ -49,6 +50,19 @@ $size: 2.5rem;
 
 	&:active {
 		background-color: var(--primary-4);
+	}
+}
+
+:global(.dark) .root {
+	background-color: var(--primary-3);
+	
+	&:hover, &:focus-visible {
+		background-color: var(--primary-4);
+	}
+	
+	&:active {
+		background-color: var(--primary-4);
+		filter: brightness(1.1);
 	}
 }
 

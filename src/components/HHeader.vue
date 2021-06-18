@@ -31,6 +31,10 @@ export default defineComponent({
 	background-color: var(--primary-1);
 }
 
+:global(.dark) .root {
+	background-color: var(--primary-2);
+}
+
 .title {
 	font-size: 2rem;
 	font-weight: 700;

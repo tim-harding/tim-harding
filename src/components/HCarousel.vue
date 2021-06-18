@@ -43,6 +43,10 @@ export default defineComponent({
 	background-color: var(--primary-2);
 }
 
+:global(.dark) .root {
+	background-color: var(--primary-1);
+}
+
 .image {
 	grid-area: center;
 	padding: 2rem;

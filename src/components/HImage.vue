@@ -85,5 +85,8 @@ export default defineComponent({
 .image {
 	width: 100%;
 	aspect-ratio: 2 / 1;
+	border-color: var(--primary-4);
+	border-style: solid;
+	border-width: 1px;
 }
 </style>
