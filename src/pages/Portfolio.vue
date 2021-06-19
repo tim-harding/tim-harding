@@ -19,7 +19,7 @@ export default defineComponent({
   },
   
   setup() {
-    const query = window.matchMedia("(max-aspect-ratio: 2/3)")
+    const query = window.matchMedia("(max-aspect-ratio: 3/4)")
     const isMobile = ref(query.matches)
     query.onchange = function(event) {
       isMobile.value = this.matches
