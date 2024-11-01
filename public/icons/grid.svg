@@ -1,7 +1,0 @@
-<svg role="img" xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" stroke="#5e81ac" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter" fill="none" >
-    <title>Grid</title>
-    <rect width="9" height="9" x="1" y="1" />
-    <rect width="9" height="9" x="14" y="1" />
-    <rect width="9" height="9" x="1" y="14" />
-    <rect width="9" height="9" x="14" y="14" />
-</svg>
